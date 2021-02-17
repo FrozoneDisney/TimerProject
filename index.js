@@ -3,23 +3,27 @@ const maxTimer = 60; //maximum amount of time you want to have on the timer
 const tpt = 1; //"TimePerTick", how many seconds you want to add per "tick" to the timer when player holds down their mousebtn
 const tick = 500; //how many milliseconds you want a tick to last when a player holds down their mousebutton
 var interval; //declared interval for later use, this is just to make it global so that more functions can access it
-var intervalDwn
+var intervalDwn;
 var btn = document.getElementById("btnTime"); //gets the element in the HTML that has the id of "btnTime"
 var txt = document.getElementById("timer"); // gets the element in the HTML that has the id of "timer"
 
 Interval();
 
 //add a listner to when player holds down their mousebutton and assign it to a function
+//the event triggers an anonymous function (a function without a function name) with the evt parameter, which is all the information the mousedown event holds
 btn.addEventListener("mousedown", function(evt){
     console.log(evt);
+    //evt.button 0 is mouse one, so we check if the mouse released is mouse one, if so, then run the addSecs function
     if(evt.button == 0)
     {
         addSecs();
     }
 });
 
-//add a event listner to the specified button when player releases mouse1 and assign it to a function
+//add a event listner to the specified button when player releases mouse1
+//the event triggers an anonymous function (a function without a function name) with the evt parameter, which is all the information the mouseup event holds
 btn.addEventListener("mouseup", function(evt){
+    //evt.button 0 is mouse one, so we check if the mouse released is mouse one, if so, then run the stop function
     if(evt.button == 0)
     {
         stop();
